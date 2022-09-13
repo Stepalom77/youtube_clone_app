@@ -12,7 +12,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <NavBar/>
-      <Videos/>
+      <Video/>
     </div>
   );
 }

@@ -1,9 +1,8 @@
-import React from "react";
-import Video from "./Video";
+import React, {useState, useEffect} from "react";
 const Videos:React.FC = () => {
+
     return(
         <div>
-            <Video/>
         </div>
     )
 }
