@@ -1,31 +1,45 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import {useParams} from 'react-router-dom';
+import { Card } from "flowbite-react";
 interface Video {
-    _id: any,
     video: string,
     title: string,
     user: any,
     views: number,
-    comments:string[]
+    comments:{
+      content: string,
+      likes: number,
+      dislikes: number,
+      user: any
+    }[]
   }
 
 const Video: React.FC = () => {
-    const [video, setVideo] = useState<Video>(Object)
-    const {id} = useParams()
+    const [video, setVideo] = useState<Video>({
+      video: '',
+      title: '',
+      user: '',
+      views: 0,
+      comments: [{
+        content: '',
+        likes: 0,
+        dislikes: 0,
+        user: ''
+      }]
+    })
     useEffect(() => {
-      const fetchVideo = async (id: any) => {
+      const fetchVideo = async () => {
         try {
-          const response = await axios.get<Video>(`http://localhost:7000/api/videos/${id}`)
+          const response = await axios.get<Video>('http://localhost:7000/api/videos-with-comments/631fdd9ced9eb772e21147f5')
           setVideo(response.data)
         } catch(error) {
           console.error(error)
         }
       }
-      fetchVideo(id)
+      fetchVideo()
     }, [])
       return(
-  <div className="ml-40 mt-10 mb-5 grid md:grid-cols-2 md:gap-6 max-w-6xl">
+  <div className="ml-40 mt-10 mb-5 grid md:grid-cols-1 md:gap-6 max-w-6xl">
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {video.video}
         </h5>
@@ -35,6 +49,28 @@ const Video: React.FC = () => {
         <div className="grid md:grid-cols-2 md:gap-5">
             <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">user id: {video.user}</p>
             <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">views: {video.views}</p>
+        </div>
+        <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Comments
+        </h5>
+        <div className="ml-10 mt-10 mb-5 grid md:grid-cols-1 md:gap-6 max-w-6xl">
+          {video.comments.map((res) => {
+            return(
+              <Card>
+              <h5 className="font-normal text-gray-700 dark:text-gray-400"  >
+                User id: {res.user}
+              </h5>
+              <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {res.content}
+              </p>
+              <div className="grid md:grid-cols-2 md:gap-5">
+                <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">Likes: {res.likes}</p>
+                <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">Dislikes: {res.dislikes}</p>
+              </div>
+            </Card>
+            )
+          })}
+
         </div>
   </div>
       )
