@@ -25,24 +25,24 @@ const Comments:React.FC = () => {
   }, [])
 
     return(
-<div className="ml-40 mt-10 mb-5 grid md:grid-cols-2 md:gap-6 max-w-6xl">
-{comments.map((response) => {
-  return(
-  <Card>
-    <h5 className="font-normal text-gray-700 dark:text-gray-400"  >
-    User id: {response.user}
-    </h5>
-    <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-    {response.content}
-    </p>
-    <div className="grid md:grid-cols-2 md:gap-6">
-        <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">Likes: {response.likes}</p>
-        <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">Dislikes: {response.dislikes}</p>
-    </div>
-  </Card>
-)
-})}
-</div>
+      <div className="ml-40 mt-10 mb-5 grid md:grid-cols-2 md:gap-6 max-w-6xl">
+        {comments.map((response) => {
+          return(
+              <Card>
+                <h5 className="font-normal text-gray-700 dark:text-gray-400"  >
+                  User id: {response.user}
+                </h5>
+                <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  {response.content}
+                </p>
+                <div className="grid md:grid-cols-2 md:gap-6">
+                  <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">Likes: {response.likes}</p>
+                  <p className="relative z-0 mb-6 w-full group font-normal text-gray-700 dark:text-gray-400">Dislikes: {response.dislikes}</p>
+                </div>
+              </Card>
+          )
+      })}
+      </div>
     )
 }
 
