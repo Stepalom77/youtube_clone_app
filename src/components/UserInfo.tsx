@@ -1,15 +1,31 @@
 import { Table } from "flowbite-react";
 import React, {useState, useEffect} from "react";
+import axios from "axios";
+interface User {
+    _id: any,
+    first_name: string,
+    last_name: string,
+    email: string,
+    username: string,
+    telephone_number:number,
+    description: string,
+    payment_method: string,
+    rating: string
+  }
 
 const Info:React.FC = () => {
-    const [firstName, setFirstName] = useState('first name')
-    const [lastName, setLastName] = useState('last name')
-    const [email, setEmail] = useState('email')
-    const [username, setUsername] = useState('username')
-    const [telephoneNumber, setTelephoneNumber] = useState('telephone number')
-    const [paymentMethod, setPaymentMethod] = useState('payment method')
-    const [rating, setRating] = useState('rating')
-    const [description, setDescription] = useState('channel description')
+    const [user, setUser] = useState<User>(Object)
+    useEffect(() => {
+        const fetchUser = async() => {
+            try {
+                const response = await axios.get<User>('http://localhost:7000/api/users/631fe4bfed9eb772e211481c')
+                setUser(response.data)
+            } catch(err) {
+                console.error(err)
+            }
+        }
+        fetchUser()
+    }, [])
     return(
         <Table className="mx-5 my-5">
             <Table.Body className="divide-y">
@@ -18,7 +34,7 @@ const Info:React.FC = () => {
                          First name
                     </Table.Cell>
                     <Table.Cell>
-                        {firstName}
+                        {user.first_name}
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -26,7 +42,7 @@ const Info:React.FC = () => {
                         Last name
                     </Table.Cell>
                     <Table.Cell>
-                        {lastName}
+                        {user.last_name}
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -34,7 +50,7 @@ const Info:React.FC = () => {
                         Email
                     </Table.Cell>
                     <Table.Cell>
-                        {email}
+                       {user.email}
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -42,7 +58,7 @@ const Info:React.FC = () => {
                         Username
                     </Table.Cell>
                     <Table.Cell>
-                        {username}
+                        {user.username}
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -50,7 +66,7 @@ const Info:React.FC = () => {
                         Telephone number
                     </Table.Cell>
                     <Table.Cell>
-                        {telephoneNumber}
+                        {user.telephone_number}
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -58,7 +74,7 @@ const Info:React.FC = () => {
                         Payment method
                     </Table.Cell>
                     <Table.Cell>
-                        {paymentMethod}
+                        {user.payment_method}
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -66,7 +82,7 @@ const Info:React.FC = () => {
                         Rating
                     </Table.Cell>
                     <Table.Cell>
-                        {rating}
+                        {user.rating}
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -74,7 +90,7 @@ const Info:React.FC = () => {
                         Description
                     </Table.Cell>
                     <Table.Cell>
-                        {description}
+                        {user.description}
                     </Table.Cell>
                 </Table.Row>
             </Table.Body>
