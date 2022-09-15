@@ -45,8 +45,11 @@ const Login: React.FC = () => {
     const fetchUsers = async () => {
         try {
           const token = await getAccessTokenSilently()
-          console.log(token)
-          const response = await axios.get<Users[]>('http://localhost:7000/api/users')
+          const response = await axios.get<Users[]>('http://localhost:7000/api/users', {
+            headers: {
+                authorization: `Bearer ${token}`
+            }
+          })
           setUsers(response.data)
           console.log(response.data)
         } catch(error) {
