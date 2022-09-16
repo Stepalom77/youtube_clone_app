@@ -9,7 +9,7 @@ const Subscriptions:React.FC = () => {
     useEffect(() => {
         const fetchUserSubscriptions = async() => {
             try {
-                const response = await axios.get<UserSubscriptions>('https://youtubeclone-production.up.railway.app/api/users/631fe4bfed9eb772e211481c')
+                const response = await axios.get<UserSubscriptions>('https://youtubeclone-production.up.railway.app/api/users/63246ba4616d8116767d76a0')
                 setSubscription(response.data)
             } catch(err) {
                 console.error(err)
