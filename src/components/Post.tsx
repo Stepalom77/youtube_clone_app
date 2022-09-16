@@ -14,7 +14,7 @@ const Posts:React.FC = () => {
     useEffect(() => {
         const fetchPosts = async () => {
           try {
-            const res = await axios.get<Posts[]>(`http://localhost:7000/api/posts`)
+            const res = await axios.get<Posts[]>(`https://youtubeclone-production.up.railway.app/api/posts`)
             setPosts(res.data)
           } catch(error) {
             console.error(error)

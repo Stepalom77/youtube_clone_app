@@ -34,7 +34,7 @@ const Login: React.FC = () => {
 
     const fetchVideos = async () => {
         try {
-          const response = await axios.get<Videos[]>('http://localhost:7000/api/videos')
+          const response = await axios.get<Videos[]>('https://youtubeclone-production.up.railway.app/api/videos')
           setList(response.data)
           console.log(response.data)
         } catch(error) {
@@ -45,7 +45,7 @@ const Login: React.FC = () => {
     const fetchUsers = async () => {
         try {
           const token = await getAccessTokenSilently()
-          const response = await axios.get<Users[]>('http://localhost:7000/api/users', {
+          const response = await axios.get<Users[]>('https://youtubeclone-production.up.railway.app/api/users', {
             headers: {
                 authorization: `Bearer ${token}`
             }

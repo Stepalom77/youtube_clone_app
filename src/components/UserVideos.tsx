@@ -20,7 +20,7 @@ const UserVideos:React.FC = () => {
         useEffect(() => {
             const fetchUserVideos = async() => {
                 try {
-                    const response = await axios.get<UserVideos>('http://localhost:7000/api/users-with-videos/631fe4bfed9eb772e211481c')
+                    const response = await axios.get<UserVideos>('https://youtubeclone-production.up.railway.app/api/users-with-videos/631fe4bfed9eb772e211481c')
                     setVideos(response.data)
                 } catch(err) {
                     console.error(err)

@@ -18,7 +18,7 @@ const Info:React.FC = () => {
     useEffect(() => {
         const fetchUser = async() => {
             try {
-                const response = await axios.get<User>('http://localhost:7000/api/users/631fe4bfed9eb772e211481c')
+                const response = await axios.get<User>('https://youtubeclone-production.up.railway.app/api/users/631fe4bfed9eb772e211481c')
                 setUser(response.data)
             } catch(err) {
                 console.error(err)

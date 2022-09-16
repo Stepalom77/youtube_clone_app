@@ -12,7 +12,7 @@ const Videos:React.FC = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const response = await axios.get<Videos[]>('http://localhost:7000/api/videos')
+        const response = await axios.get<Videos[]>('https://youtubeclone-production.up.railway.app/api/videos')
         setList(response.data)
       } catch(error) {
         console.error(error)

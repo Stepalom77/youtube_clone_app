@@ -15,7 +15,7 @@ const Comments:React.FC = () => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await axios.get<Comments[]>(`http://localhost:7000/api/comments`)
+        const res = await axios.get<Comments[]>(`https://youtubeclone-production.up.railway.app/api/comments`)
         setComments(res.data)
       } catch(error) {
         console.error(error)

@@ -9,7 +9,7 @@ const LikedVideos:React.FC = () => {
     useEffect(() => {
         const fetchUserLikedVideos = async() => {
             try {
-                const response = await axios.get<UserLikedVideos>('http://localhost:7000/api/users/631fe4bfed9eb772e211481c')
+                const response = await axios.get<UserLikedVideos>('https://youtubeclone-production.up.railway.app/api/users/631fe4bfed9eb772e211481c')
                 setUser(response.data)
             } catch(err) {
                 console.error(err)

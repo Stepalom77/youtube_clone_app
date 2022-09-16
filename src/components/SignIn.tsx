@@ -41,7 +41,7 @@ const SignIn: React.FC = () => {
         try{
             const response = await axios({
                 method: "POST",
-                url: 'http://localhost:7000/api/users',
+                url: 'https://youtubeclone-production.up.railway.app/api/users',
                 //headers: {"Content-Type": "multipart/form-data"},
                 data: userFormData
             })
