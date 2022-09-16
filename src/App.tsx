@@ -22,6 +22,7 @@ const App: React.FC = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/sign' element={<SignIn/>}/>
         <Route path='/user' element={<User/>}/>
+        <Route path='/users' element={<User/>}/>
         <Route path='/video' element={<Video/>}/>
         <Route path='/video/:id' element={<Video/>}/>
         <Route path='/posts' element={<Posts/>}/>
